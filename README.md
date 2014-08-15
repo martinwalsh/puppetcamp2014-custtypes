@@ -7,7 +7,11 @@ An outline for the talk:
 
 ## Introduction
 
+Introducing myself, who I am, etc.
+
 ## Running Into Limits
+
+To this point, we've seen 
 
 ## Types and Providers
 
