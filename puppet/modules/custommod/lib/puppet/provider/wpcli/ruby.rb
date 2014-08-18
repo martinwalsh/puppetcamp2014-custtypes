@@ -1,4 +1,5 @@
 require 'mkmf'
+
 Puppet::Type.type(:wpcli).provide :ruby do
   desc "..."
 
@@ -25,12 +26,10 @@ Puppet::Type.type(:wpcli).provide :ruby do
   ## This provider will create a binary called 'wp'
   def exists?
     executable = find_executable 'wp'
-
     if executable.nil?
       return false
     else
       return true
     end
   end
-
 end
