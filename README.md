@@ -1,81 +1,25 @@
-puppetcamp2014-custtypes
+PuppetCamp Chicago 2014:  Custom Types and Providers
 ========================
 
-A project for the 2014 PupppetCamp Custom Providers Talk
+Hello!  Thank you for taking a look at the material - I hope you find it useful.
 
-An outline for the talk:
+Here's a quick rundown of what you'll find here:
 
-## Introduction
-
-Introducing myself, who I am, etc.
-
-## Customizing Your Puppet Environment
-
-To this point, I'm going to assume that we've learned a few things about puppet, perhaps
-migrating our code from
-
-  1. Simple manifest files.
-  2. Downloading modules from the Puppet Forge.
-  3. Writing your own modules!
-  4. Defined a few custom types with Puppet DSL.
+  1.  A Keynote presentation that was given at PuppetCamp Chicago on August 19, 2014.
+  2.  An example project demonstrating a custom type/provider that installs the
+      "Wordpress CLI" tool.  (See [http://wp-cli.org][wp-cli] for more detail on the WP-CLI project.)
+  3.  A vagrant environment that allows you to see the provisioning in action.  (See [http://vagrantup.com][vagrant] to get started using Vagrant.)
   
-## Where Puppet Excels
-
-Encapsulation
- `file{"/etc/config.conf":
-        ensure => "directory",
-        owner  => 'devuser',
-        content => "key value"
-   }`  
-   
-Dependencies: Puppet uses a dependency graph heavily - some resources depend on 
-other resources.  This dependency must be explicity declared.
-   
-Where puppet does not do so well:  executing a defined instruction set in a particular
-order.
+  [wp-cli]: http://wp.cli.org
+  [vagrant]: http://vagrantup.com
   
-## Running into Ugliness
+Here's what this presentation will cover:
 
-Puppet DSL
+  1.  An overview of the "Puppet Learning Curve" - progressing from manifests, to modules to defined types.
+  2.  An accounting of the problems that users might encounter with the Puppet language / DSL. Many new users can struggle with what they perceive as 'shortcomings' of Puppet in managing scripting-style tasks.
+  3.  A brief introduction to extending Puppet with custom types and providers - mainly looking through the example provided here.
 
-`   case $environment {
-    'vagrant': {
-      # Copy SSH keys into place
-      file{"/home/devuser/.ssh":
-        ensure => "directory",
-        owner  => 'dice',
-      }->
-      exec{"cp /opt/ssh-keys/* /home/devuser/.ssh/":
-        path => "/bin:/usr/bin",
-        user => 'devuser',
-        creates => '/home/devuser/.ssh/id_rsa.pub',
-      }->
-      exec{"chown dice:dice /home/devuser/.ssh/*":
-        path => "/bin:/usr/bin",
-        user => "devuser",
-      }->
-      exec{"chmod -R 0400 /home/devuser/.ssh/*":
-        path => "/bin:/usr/bin",
-      }->
-      file{"/home/devuser/.ssh/config":
-        ensure => present,
-        owner => 'devuser',
-        group => 'devuser',
-        content => "StrictHostKeyChecking no",
-      }
-     }
-`
-This is an example of running many sequential commands within the puppet DSL.
-(There are many other ways of doing this as well - though each requires 'abusing' the 
-puppet dependency model.)
+If you have any questions or comments, please feel free to contact me via:
 
-## Types and Providers
-
-What you might want in many of these cases is to wrap up functionality in a "TYPE".  
-We have seen a few examples of using puppet types with the use of DSL defined types
-
-( https://docs.puppetlabs.com/learning/definedtypes.html )
-
-## Defining A Custom Type
-
-## Defining A Custom Provider
+Twitter:  @chadothompson
+The Web:  http://chadthompson.me
