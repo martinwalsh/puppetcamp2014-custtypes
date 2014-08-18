@@ -22,4 +22,7 @@ Here's what this presentation will cover:
 If you have any questions or comments, please feel free to contact me via:
 
 Twitter:  @chadothompson
-The Web:  http://chadthompson.me
+
+The Web:  [http://chadthompson.me][chadthompson]
+
+[chadthompson]: http://chadthompson.me
